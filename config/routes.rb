@@ -1,51 +1,35 @@
 Rails.application.routes.draw do
 
-  namespace :admin do
-    get 'users/index'
-    get 'users/show'
-    get 'users/edit'
-  end
-  namespace :admin do
-    get 'tags/index'
-    get 'tags/edit'
-  end
-  namespace :admin do
-    get 'post_coments/index'
-    get 'post_coments/show'
-    get 'post_coments/edit'
-  end
-  namespace :admin do
-    get 'posts/index'
-    get 'posts/show'
-    get 'posts/edit'
-  end
-  namespace :admin do
-    get 'homes/top'
-  end
-  namespace :public do
-    get 'post_comments/edit'
-  end
-  namespace :public do
-    get 'users/show'
-    get 'users/edit'
-    get 'users/check'
-  end
-  namespace :public do
-    get 'post_images/new'
-    get 'post_images/index'
-    get 'post_images/show'
-    get 'post_images/edit'
-  end
-  namespace :public do
-    get 'homes/top'
-  end
   devise_for :users, skip: [:passwords], controllers:{
     registrations: "public/registrations",
     sessions: 'public/sessions'
   }
 
+    scope module: :public do
+      root to: "homes#top"
+      
+      resources :post_images, only: [:new, :create, :index, :show, :edit, :update, :destroy] do
+        resource :favorites, only: [:create, :destroy]
+        resources :post_comments, only: [:create, :edit, :update, :destroy] do
+          resource :likes, only: [:create, :destroy]
+        end  
+      end
+      
+      resources :users, only: [:show, :edit, :update] do
+        member do
+          get :favorites
+        end
+      end
+      
+      get 'users/:id/check' => 'users#check', as: 'check'
+      patch 'users/:id/withdraw' => 'users#withdraw', as: 'withdraw'
+      
+      post '/post_images/guest_sign_in', to: 'post#guest_sign_in'
+      
+    end
+  
   devise_for :admin, skip: [:registrations, :passwords], controllers:{
     sessions: 'admin/sessions'
   }
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-end
+  end
