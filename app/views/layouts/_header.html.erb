@@ -1,0 +1,45 @@
+      <!--<!% if admin_signed_in? %>-->
+<p>空</p>
+<p>欄</p>
+
+        <%= link_to admin_users_path ,class: 'btn btn-light text-success' do %>
+          <i class="fas fa-users"></i> 会員一覧
+        <% end %>
+
+        <%= link_to admin_tags_path ,class: 'btn btn-light text-success' do %>
+          <i class="fas fa-tags"></i> タグ一覧
+        <% end %>
+
+        <%= link_to destroy_admin_session_path, method: :delete, class: 'btn btn-light text-success' do %>
+          <i class="fas fa-sign-out-alt"></i> ログアウト
+        <% end %>
+
+      <!--<!% elsif user_signed_in? %>-->
+
+        <%= link_to post_images_path,class: 'btn btn-light text-success' do %>
+          <i class="fas fa-list-alt"></i> 投稿一覧
+        <% end %>
+
+        <%= link_to new_post_image_path,class: 'btn btn-light text-success' do  %>
+          <i class="fas fa-pencil-alt"></i> 新規投稿
+        <% end %>
+
+        <!--<!%= link_to destroy_user_session_path, method: :delete, class: 'btn btn-light text-success' do %>-->
+        <!--  <i class="fas fa-sign-out-alt"></i> ログアウト-->
+        <!--<!% end %>-->
+
+      <!--<!% else %>-->
+
+        <%= link_to new_user_registration_path,class: 'btn btn-light text-success' do %>
+          <i class="fas fa-user-plus"></i> 新規登録
+        <% end %>
+
+        <%= link_to new_user_session_path,class: 'btn btn-light text-success' do %>
+          <i class="fas fa-sign-in-alt"></i> ログイン
+        <% end %>
+
+        <%= link_to post_images_guest_sign_in_path, method: :post,class: 'btn btn-light text-success' do %>
+          <i class="fas fa-sign-in-alt"></i> ゲストログイン
+        <% end %>
+
+      <!--% end %-->
