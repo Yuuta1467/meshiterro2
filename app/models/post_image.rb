@@ -6,6 +6,8 @@ class PostImage < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :likes, dependent: :destroy
 
+  has_one_attached :image
+
 　validates :shop_name, presence: true
   validates :image, presence: true
   validates :content,presence:true
