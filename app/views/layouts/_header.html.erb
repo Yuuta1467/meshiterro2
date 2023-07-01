@@ -13,6 +13,10 @@
 
       <% elsif user_signed_in? %>
 
+        <%= link_to user_path(current_user),class: 'btn btn-light text-success' do %>
+          <i class="fas fa-home"></i> マイページ
+        <% end %>
+
         <%= link_to post_images_path,class: 'btn btn-light text-success' do %>
           <i class="fas fa-list-alt"></i> 投稿一覧
         <% end %>
