@@ -24,7 +24,7 @@ Rails.application.routes.draw do
       get 'users/:id/check' => 'users#check', as: 'check'
       patch 'users/:id/withdraw' => 'users#withdraw', as: 'withdraw'
 
-      post '/post_images/guest_sign_in', to: 'post#guest_sign_in'
+      post '/post_images/guest_sign_in', to: 'post_images#guest_sign_in'
 
     end
 
