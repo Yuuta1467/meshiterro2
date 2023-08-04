@@ -18,6 +18,7 @@
     <p><%= image_tag post_comment.user.get_profile_image(100,100) %></p>
     <%= post_comment.user.name %>
     <%= post_comment.created_at.strftime('%Y/%m/%d') %><%= post_comment.comment %>
+    <%= render "public/likes/like", post_comment: post_comment %>
   <% end %>
 </div>
 <div>
