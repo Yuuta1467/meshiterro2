@@ -1,1 +1,13 @@
 @use '~bootstrap/scss/bootstrap';
+@import url('https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500&display=swap');
+// 字体の変更
+
+body{
+  background-image: url('../images/736141.jpg');
+  background-size: cover;
+}
+
+body{
+  font-family: 'Zen Maru Gothic', sans-serif;
+}
+// アプリケーション全体の字体を変更
