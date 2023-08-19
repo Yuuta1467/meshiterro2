@@ -1,2 +1,64 @@
-<h1>Admin::Users#show</h1>
-<p>Find me in app/views/admin/users/show.html.erb</p>
+<div class="container">
+
+  <div class="row">
+    <div class="col-sm-2 text-center">
+      <div class="mt-3">
+        <h3>会員情報ページ</h3>
+      </div>
+    </div>
+    <div class="col-sm-8">
+      <div class="d-flex mt-3">
+        <h4>登録情報</h4>
+        <%= link_to "編集する", edit_admin_user_path(@user), class: "btn mx-sm-4 btn-success ml-1" %>
+      </div>
+
+      <div class="field border-bottom mt-2">
+        <p>プロフィール画像</p>
+        <%= image_tag @user.get_profile_image(100,100) %>
+      </div>
+
+      <div class="d-flex border-bottom mt-2">
+        <p class= "col-sm-4">ニックネーム</p>
+        <p><%= @user.name %></p>
+      </div>
+
+      <div class="d-flex border-bottom mt-2">
+        <p class= "col-sm-4">自己紹介</p>
+        <p><%= @user.introduction %></p>
+      </div>
+
+      <div class="d-flex border-bottom mt-2">
+        <p class= "col-sm-4">ステータス</p>
+        <% if @user.is_deleted == false %>
+          <p class="text-success">有効</p>
+        <% else %>
+          <p class="text-secondary">退会</p>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-6 my-3 offset-1">
+
+      <div class="text-center">
+        <p>投稿一覧</p>
+      </div>
+
+      <!--%= render 'admin/posts/index',posts: @posts %-->
+    </div>
+
+    <div class="col-sm-5 my-3">
+
+      <div class="text-center">
+        <p>コメント一覧</p>
+      </div>
+
+      <!--%= render 'admin/post_comments/index',post_comments: @post_comments %-->
+    </div>
+
+  </div>
+</div>
+

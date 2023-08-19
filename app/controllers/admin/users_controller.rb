@@ -6,6 +6,9 @@ class Admin::UsersController < ApplicationController
   end
 
   def show
+    @user = User.find(params[:id])
+    @posts = @user.post_images.order(created_at: :desc)
+    @post_comments = @user.post_comments.order(created_at: :desc)
   end
 
   def edit
